@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from '@vercel/analytics/next';
 
 // ── UPDATE THIS when you buy your domain ──
 const SITE_URL = "https://arriza.dev";
@@ -128,7 +129,10 @@ export default function RootLayout({ children }) {
         />
         <JsonLd />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
