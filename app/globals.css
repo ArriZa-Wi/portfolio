@@ -1015,3 +1015,5 @@ input, textarea { font: inherit; color: inherit; }
   .theme-toggle { bottom: 14px; right: 14px; padding: 8px 10px; }
   .theme-toggle .mono { display: none; }
 }
+/* the in-flow marquee now sits where the scroll hint was; the marquee already signals more content below */
+.scroll-hint { display: none; }
