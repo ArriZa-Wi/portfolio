@@ -523,24 +523,25 @@ input, textarea { font: inherit; color: inherit; }
   font-size: 10px;
   color: #fff;
 }
-.cara-num { color: var(--accent); }
+.cara-num { color: #7cff6b; }
 .cara-name { color: #fff; }
 .cara-dots {
   display: flex; gap: 6px;
   justify-content: center;
-  padding: 12px;
+  padding: 2px 12px;
   background: var(--bg-2);
 }
 .cara-dot {
   width: 28px; height: 3px;
-  background: var(--line-2);
+  /* 3px bar, 25px tap area */
+  box-sizing: content-box; padding: 11px 0; background-clip: content-box;
+  background-color: var(--line-2);
   border: 0;
-  padding: 0;
-  transition: background 0.3s, width 0.3s;
+  transition: background-color 0.3s, width 0.3s;
   cursor: pointer;
 }
-.cara-dot.is-active { background: var(--accent); width: 44px; }
-.cara-dot:hover { background: var(--fg-2); }
+.cara-dot.is-active { background-color: var(--accent); width: 44px; }
+.cara-dot:hover { background-color: var(--fg-2); }
 
 .mock-revit { font-size: 11px; }
 .mock-row { display: flex; justify-content: space-between; padding: 8px 12px; border: 1px solid var(--line); }
@@ -590,7 +591,7 @@ input, textarea { font: inherit; color: inherit; }
 .bullet { color: var(--accent); font-size: 12px; flex-shrink: 0; }
 .fproj-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .chip {
-  font-size: 10px; padding: 4px 10px;
+  font-size: 11px; padding: 4px 10px;
   border: 1px solid var(--line-2);
   border-radius: 999px;
   color: var(--fg-2);
@@ -679,7 +680,7 @@ input, textarea { font: inherit; color: inherit; }
 .awards-intro .link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .awards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   gap: 20px;
 }
 .award-card-wrap { display: flex; }
@@ -747,7 +748,7 @@ input, textarea { font: inherit; color: inherit; }
 /* ── skills ────────────────────────────────────────────────────────── */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
   gap: 40px 32px;
 }
 .skill-cat { font-size: 11px; color: var(--muted); margin-bottom: 16px; text-transform: lowercase; }
@@ -790,7 +791,7 @@ input, textarea { font: inherit; color: inherit; }
 
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr));
   gap: 16px;
 }
 .contact-card {
@@ -1017,3 +1018,19 @@ input, textarea { font: inherit; color: inherit; }
 }
 /* the in-flow marquee now sits where the scroll hint was; the marquee already signals more content below */
 .scroll-hint { display: none; }
+
+/* comfortable hit areas for small text links */
+.tb-name, .back-top { display: inline-block; padding: 6px 0; }
+
+@media (max-width: 800px) {
+  /* status line: let text and clock wrap as one sentence instead of flex columns */
+  .hero-meta { display: block; line-height: 1.8; }
+  .hero-meta .dot-live { display: inline-block; margin-right: 8px; vertical-align: middle; }
+  /* screenshots are 16:10; drop the 4:3 letterbox so they use the full width */
+  .fproj-vis { aspect-ratio: 16 / 11.5; }
+  /* no physical keyboard on phones */
+  .footer-mid > :nth-child(n+2) { display: none; }
+}
+@media (max-width: 420px) {
+  .tb-active { display: none; }
+}
