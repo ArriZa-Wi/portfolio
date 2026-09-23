@@ -5,9 +5,9 @@ const SITE_URL = "https://arriza.dev";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Arriza Wibowo — Full-Stack Developer & Systems Engineer",
+  title: "Arriza Wibowo | Full-Stack & AI Engineer",
   description:
-    "Portfolio of Arriza Wibowo — full-stack developer, systems engineer, and CS student at Western Michigan University. Co-founder of Electric Trident. Specializing in Next.js, Django, AI tooling, and IT infrastructure.",
+    "Portfolio of Arriza Wibowo, full-stack and AI engineer, systems administrator, and CS junior at Western Michigan University. Co-founder of Electric Trident, building production apps with Next.js, Supabase, Postgres RLS, and LLMs.",
   keywords: [
     "Arriza Wibowo",
     "full-stack developer",
@@ -21,8 +21,13 @@ export const metadata = {
     "TypeScript",
     "React",
     "AI tooling",
+    "Supabase",
+    "PostgreSQL",
+    "Playwright",
+    "accessibility",
+    "SwivelServe",
+    "BroncoNav",
     "Revit Copilot",
-    "GraduAI",
     "portfolio",
     "software engineer",
     "Kalamazoo",
@@ -34,23 +39,23 @@ export const metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: "Arriza Wibowo",
-    title: "Arriza Wibowo — Full-Stack Developer & Systems Engineer",
+    title: "Arriza Wibowo | Full-Stack & AI Engineer",
     description:
-      "CS sophomore @ WMU with a 4.0 GPA. Co-founder of Electric Trident. Building AI tooling, full-stack apps, and managing IT infrastructure.",
+      "CS junior at WMU with a 4.0 GPA. Co-founder of Electric Trident. Shipping full-stack apps, AI platforms, and accessible software for real clients.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Arriza Wibowo — Full-Stack Developer",
+        alt: "Arriza Wibowo | Full-Stack & AI Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arriza Wibowo — Full-Stack Developer",
+    title: "Arriza Wibowo | Full-Stack & AI Engineer",
     description:
-      "CS sophomore @ WMU with a 4.0 GPA. Co-founder of Electric Trident. Building AI tooling, full-stack apps, and managing IT infrastructure.",
+      "CS junior at WMU with a 4.0 GPA. Co-founder of Electric Trident. Shipping full-stack apps, AI platforms, and accessible software for real clients.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -76,7 +81,7 @@ function JsonLd() {
     "@type": "Person",
     name: "Arriza Wibowo",
     url: SITE_URL,
-    jobTitle: "Full-Stack Developer & Systems Engineer",
+    jobTitle: "Full-Stack & AI Engineer",
     worksFor: [
       {
         "@type": "Organization",
@@ -94,7 +99,7 @@ function JsonLd() {
     },
     knowsAbout: [
       "Next.js", "React", "Django", "Python", "TypeScript",
-      "T3 Stack", "AI/ML", "System Administration", "Revit API",
+      "Supabase", "PostgreSQL", "LLM integration", "Playwright", "WCAG accessibility", "System Administration",
     ],
     sameAs: [
       "https://github.com/ArriZa-Wi",

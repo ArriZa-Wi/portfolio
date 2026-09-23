@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export function Terminal() {
   const [open, setOpen] = useState(false);
   const [history, setHistory] = useState([
-    { type: "out", text: "arriza@portfolio ~ % an interactive terminal — explore the site by typing." },
+    { type: "out", text: "arriza@portfolio ~ % an interactive terminal. explore the site by typing." },
     { type: "out", text: "type `help` to see all commands, or try `awards`, `projects`, `github`." }
   ]);
   const [input, setInput] = useState("");
@@ -38,8 +38,8 @@ export function Terminal() {
     let out;
     if (!c) return;
     if (c === "help") out = "available: about, projects, awards, contact, github, resume, clear, whoami, sudo, exit";
-    else if (c === "about") out = "CS sophomore @ WMU. Full-stack + IT. Building GraduAI. 4.0 GPA.";
-    else if (c === "projects") out = "1. revit-copilot  2. tweeter  3. ytsave  4. graduai  5. berwyn-site";
+    else if (c === "about") out = "CS junior @ WMU, 4.0 GPA. Co-founder of Electric Trident (6 client projects). Full-stack + AI + sysadmin.";
+    else if (c === "projects") out = "1. swivelserve  2. ignite-ai  3. bronconav  4. revit-copilot  5. liminal-vantage  6. et-framework";
     else if (c === "awards") out = "MWC3: 1st python '26, 1st django '26, 3rd arduino '26, 2nd arduino '25, 1st erp '24, 1st erp + python '23.";
     else if (c === "contact") out = "arrizafathi@gmail.com · 269-312-9154 · @ArriZa-Wi";
     else if (c === "github") { window.open("https://github.com/ArriZa-Wi", "_blank"); out = "→ opening github.com/ArriZa-Wi"; }
@@ -59,8 +59,7 @@ export function Terminal() {
     <button className="term-toggle" onClick={() => setOpen(true)} data-cursor="link" aria-label="Open terminal">
       <span className="term-toggle-kbd mono">`</span>
       <span className="term-toggle-text">
-        <span className="ttx-main mono">try the terminal</span>
-        <span className="ttx-sub mono">type <span className="accent">help</span> · awards · projects</span>
+        <span className="ttx-main mono">terminal</span>
       </span>
     </button>
   );
@@ -70,7 +69,7 @@ export function Terminal() {
       <div className="terminal">
         <div className="term-head">
           <span className="term-dot r" /><span className="term-dot y" /><span className="term-dot g" />
-          <span className="term-title mono">arriza@portfolio — zsh</span>
+          <span className="term-title mono">arriza@portfolio: zsh</span>
           <button className="term-close" onClick={() => setOpen(false)}>esc</button>
         </div>
         <div className="term-body mono">

@@ -88,15 +88,19 @@ export function Cursor() {
 }
 
 export function LiveClock() {
-  const [now, setNow] = useState(() => new Date());
+  // Rendered only after mount so the server and client markup match.
+  const [now, setNow] = useState(null);
   useEffect(() => {
+    setNow(new Date());
     const id = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(id);
   }, []);
-  const fmt = new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/Detroit", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false
-  }).format(now);
-  return <span className="mono">{fmt} EST</span>;
+  if (!now) return <span className="mono">--:--:-- ET</span>;
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Detroit", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23", timeZoneName: "short"
+  }).formatToParts(now);
+  const get = (t) => parts.find((p) => p.type === t)?.value;
+  return <span className="mono">{get("hour")}:{get("minute")}:{get("second")} {get("timeZoneName")}</span>;
 }
 
 export function Counter({ to, suffix = "", duration = 1400, decimals }) {

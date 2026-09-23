@@ -22,7 +22,7 @@ function SectionLabel({ n, title }) {
     <div className="section-label">
       <span className="mono num">{n}</span>
       <span className="rule" />
-      <span className="mono title">{title}</span>
+      <h2 className="mono title">{title}</h2>
     </div>
   );
 }
@@ -46,7 +46,7 @@ export function Hero({ data }) {
       <div className="hero-grid">
         <div className="hero-left">
           <div className="mono hero-meta">
-            <span className="dot-live" /> available · sophomore @ wmu · <LiveClock />
+            <span className="dot-live" /> available · junior @ wmu · <LiveClock />
           </div>
           <h1 ref={nameRef} className="hero-name">
             <span className="line">Arriza</span>
@@ -87,12 +87,13 @@ export function Hero({ data }) {
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="marquee-group">
               <span>Full-Stack</span><span className="acc">●</span>
-              <span>AI Tooling</span><span className="acc">●</span>
-              <span>Django</span><span className="acc">●</span>
-              <span>T3 Stack</span><span className="acc">●</span>
-              <span>Python</span><span className="acc">●</span>
+              <span>AI Engineering</span><span className="acc">●</span>
+              <span>Next.js</span><span className="acc">●</span>
+              <span>Supabase</span><span className="acc">●</span>
+              <span>Postgres RLS</span><span className="acc">●</span>
+              <span>Playwright</span><span className="acc">●</span>
+              <span>Accessibility</span><span className="acc">●</span>
               <span>System Admin</span><span className="acc">●</span>
-              <span>Revit API</span><span className="acc">●</span>
             </span>
           ))}
         </div>
@@ -121,6 +122,10 @@ export function About({ data }) {
             <div className="stat-label mono">gpa</div>
           </div>
           <div className="stat">
+            <div className="stat-num"><Counter to={6} /></div>
+            <div className="stat-label mono">client projects</div>
+          </div>
+          <div className="stat">
             <div className="stat-num"><Counter to={10} suffix="+" /></div>
             <div className="stat-label mono">shipped projects</div>
           </div>
@@ -128,30 +133,43 @@ export function About({ data }) {
             <div className="stat-num"><Counter to={8} /></div>
             <div className="stat-label mono">wins & medals</div>
           </div>
-          <div className="stat">
-            <div className="stat-num"><Counter to={3} /></div>
-            <div className="stat-label mono">years coding</div>
-          </div>
         </Reveal>
       </div>
     </section>
   );
 }
 
-const GRADUAI_SHOTS = [
-  { src: "/assets/graduai/01-dashboard.png", label: "Dashboard" },
-  { src: "/assets/graduai/02-degree.png", label: "Degree Audit" },
-  { src: "/assets/graduai/03-plan.png", label: "Plan Builder" },
-  { src: "/assets/graduai/04-chat.png", label: "Chat Advisor" }
-];
+const PROJECT_SHOTS = {
+  swivelserve: {
+    theme: "light",
+    shots: [
+      { src: "/assets/swivelserve/01-gift-wizard.png", label: "Gift Wizard" },
+      { src: "/assets/swivelserve/02-engraving-preview.png", label: "Engraving Preview" },
+      { src: "/assets/swivelserve/03-admin-analytics.png", label: "Admin Analytics" },
+      { src: "/assets/swivelserve/04-organization.png", label: "Organization" }
+    ]
+  },
+  ignite: {
+    theme: "light",
+    shots: [
+      { src: "/assets/ignite/01-sign-in.png", label: "Sign In" },
+      { src: "/assets/ignite/02-choose-a-tool.png", label: "Choose a Tool" },
+      { src: "/assets/ignite/03-general-ai.png", label: "General AI" },
+      { src: "/assets/ignite/04-prototype-ai.png", label: "Prototype AI" }
+    ]
+  },
+  bronconav: {
+    theme: "light",
+    shots: [
+      { src: "/assets/bronconav/01-landing.png", label: "Landing" },
+      { src: "/assets/bronconav/02-ride-request.png", label: "Ride Request" },
+      { src: "/assets/bronconav/03-driver-dashboard.png", label: "Driver Dashboard" },
+      { src: "/assets/bronconav/04-admin-rides.png", label: "Admin Dispatch" }
+    ]
+  }
+};
 
-const TWEETER_SHOTS = [
-  { src: "/assets/tweeter/01-feed.png", label: "Feed" },
-  { src: "/assets/tweeter/02-new.png", label: "Compose" },
-  { src: "/assets/tweeter/03-profile.png", label: "Edit Profile" }
-];
-
-function ShotCarousel({ shots, hover, tilt, theme = "light" }) {
+function ShotCarousel({ shots, name, hover, tilt, theme = "light" }) {
   const [idx, setIdx] = useState(0);
   const n = shots.length;
 
@@ -180,7 +198,7 @@ function ShotCarousel({ shots, hover, tilt, theme = "light" }) {
           <Image
             key={i}
             src={s.src}
-            alt={s.label}
+            alt={`${name} screenshot: ${s.label}`}
             fill
             sizes="(max-width: 800px) 100vw, 50vw"
             className={`cara-img ${i === idx ? "is-active" : ""}`}
@@ -215,11 +233,10 @@ function ScreenshotMockup({ src, alt, hover, tilt, theme = "light" }) {
   );
 }
 
-function ProjectMockup({ id, hover, tilt }) {
-  if (id === "graduai") return <ShotCarousel shots={GRADUAI_SHOTS} hover={hover} tilt={tilt} theme="light" />;
+function ProjectMockup({ id, name, hover, tilt }) {
   if (id === "revit-copilot") return <ScreenshotMockup src="/assets/revit-copilot.png" alt="Revit Copilot UI" hover={hover} tilt={tilt} theme="dark" />;
-  if (id === "ytsave") return <ScreenshotMockup src="/assets/ytsave.png" alt="YTSave web app" hover={hover} tilt={tilt} theme="dark" />;
-  if (id === "tweeter") return <ShotCarousel shots={TWEETER_SHOTS} hover={hover} tilt={tilt} theme="dark" />;
+  const set = PROJECT_SHOTS[id];
+  if (set && set.shots.length > 0) return <ShotCarousel shots={set.shots} name={name} hover={hover} tilt={tilt} theme={set.theme} />;
   return null;
 }
 
@@ -253,7 +270,7 @@ function FeaturedProject({ p, idx }) {
       >
         <div className="fproj-vis">
           <div className="fproj-num mono">{p.n}</div>
-          <ProjectMockup id={p.id} hover={hover} tilt={tilt} />
+          <ProjectMockup id={p.id} name={p.name} hover={hover} tilt={tilt} />
         </div>
         <div className="fproj-body">
           <div className="fproj-head">
@@ -298,9 +315,9 @@ export function FeaturedProjects({ data }) {
       <Reveal className="github-cta">
         <a href="https://github.com/ArriZa-Wi" target="_blank" rel="noreferrer" className="gh-card" data-cursor="view">
           <div className="gh-left">
-            <div className="gh-label mono">— more on github</div>
+            <div className="gh-label mono">{"// more on github"}</div>
             <div className="gh-title">See the rest of what I&apos;ve built.</div>
-            <div className="gh-sub">From Django clones to T3 apps to Python automation scripts. The full archive lives at <span className="mono accent">github.com/ArriZa-Wi</span>.</div>
+            <div className="gh-sub">Client code stays private. Personal projects, hackathon builds, Django apps, and Python automation live at <span className="mono accent">github.com/ArriZa-Wi</span>.</div>
           </div>
           <div className="gh-right">
             <svg className="gh-mark" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
@@ -406,7 +423,7 @@ export function Awards({ data }) {
     <section id="awards" className="section section-awards">
       <SectionLabel n="04" title="competitions & honors" />
       <Reveal className="awards-intro">
-        <p>Six medals across four years at the <a href="https://mwc3.org" target="_blank" rel="noreferrer" className="link">Midwest Collegiate Computing Conference</a>, a hackathon win at WMU, and a four-year scholarship that brought me here. Each card links out to the competition page.</p>
+        <p>Seven medals across four years at the <a href="https://mwc3.org" target="_blank" rel="noreferrer" className="link">Midwest Collegiate Computing Conference</a>, a hackathon win at WMU, and a four-year scholarship that brought me here. Each card links out to the competition page.</p>
       </Reveal>
       <div className="awards-grid">
         {data.awards.map((aw, i) => (
@@ -446,7 +463,7 @@ export function Skills({ data }) {
       <div className="skills-grid">
         {Object.entries(data.skills).map(([cat, items], i) => (
           <Reveal key={cat} as="div" className="skill-block" delay={i * 50}>
-            <div className="skill-cat mono">— {cat.toLowerCase()}</div>
+            <div className="skill-cat mono">{"// "}{cat.toLowerCase()}</div>
             <div className="skill-items">
               {items.map((s) => (
                 <span key={s} className="skill-pill" data-cursor="link">{s}</span>
@@ -489,7 +506,7 @@ export function Contact({ data }) {
             Let&apos;s <span className="accent-italic">build</span> something.
           </h2>
           <p className="contact-blurb">
-            I&apos;m always open to internships, freelance, or just a conversation about software. Email is the fastest — usually a reply within a day.
+            I&apos;m always open to internships, freelance, or just a conversation about software. Email is the fastest way to reach me, and I usually reply within a day.
           </p>
         </Reveal>
         <Reveal className="contact-cards" delay={120}>

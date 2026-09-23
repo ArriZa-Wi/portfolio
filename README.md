@@ -1,4 +1,4 @@
-# Arriza Wibowo — Portfolio
+# Arriza Wibowo | Portfolio
 
 Personal portfolio built with **Next.js 15** (App Router), **React 19**, and deployed on **Vercel**.
 
@@ -19,7 +19,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 1. Go to [porkbun.com](https://porkbun.com) and create an account
 2. Search for your domain (e.g. `arriza.dev`, `arrizawibowo.com`)
-3. `.dev` domains are ~$10/year, `.com` is ~$9/year — Porkbun has no markup or renewal hikes
+3. `.dev` domains are ~$10/year, `.com` is ~$9/year: Porkbun has no markup or renewal hikes
 4. Complete the purchase
 
 ### Step 2: Push to GitHub
@@ -41,7 +41,7 @@ git push -u origin main
 1. Go to [vercel.com](https://vercel.com) and sign up with your GitHub account
 2. Click **"Add New..."** → **"Project"**
 3. Import your `portfolio` repo from GitHub
-4. Vercel auto-detects Next.js — leave all settings as default
+4. Vercel auto-detects Next.js: leave all settings as default
 5. Click **"Deploy"**
 6. In ~30 seconds you'll have a live URL like `portfolio-xyz.vercel.app`
 
@@ -52,37 +52,37 @@ git push -u origin main
 3. Vercel will show you DNS records to add. Go to Porkbun:
    - Log in → **Domain Management** → click your domain → **DNS Records**
    - Add the records Vercel shows you (usually an `A` record pointing to `76.76.21.21` and a `CNAME` for `www` pointing to `cname.vercel-dns.com`)
-4. Back in Vercel, click **Verify** — it'll detect the records within a few minutes
+4. Back in Vercel, click **Verify**: it'll detect the records within a few minutes
 5. SSL certificate is auto-provisioned. You're live at your domain.
 
 ### Step 5: Update Your Domain in the Code
 
 Once you have your domain, update these three files:
 
-- `app/layout.js` — change `SITE_URL` on line 4
-- `app/sitemap.js` — change `SITE_URL` on line 2
-- `app/robots.js` — change `SITE_URL` on line 2
+- `app/layout.js`: change `SITE_URL` on line 4
+- `app/sitemap.js`: change `SITE_URL` on line 2
+- `app/robots.js`: change `SITE_URL` on line 2
 
-Commit and push — Vercel auto-deploys on every push to `main`.
+Commit and push: Vercel auto-deploys on every push to `main`.
 
 ---
 
 ## SEO Checklist (Already Done)
 
-- [x] Next.js Metadata API — title, description, keywords
-- [x] Open Graph tags — for LinkedIn/Facebook/Discord link previews
-- [x] Twitter Card tags — for Twitter/X link previews
-- [x] JSON-LD structured data — `Person` schema for Google
-- [x] `robots.txt` — allows all crawlers
-- [x] `sitemap.xml` — auto-generated
-- [x] Canonical URL — prevents duplicate content
-- [x] Semantic HTML — proper heading hierarchy, landmarks, alt text
-- [x] `next/image` — automatic image optimization, lazy loading, WebP/AVIF
+- [x] Next.js Metadata API: title, description, keywords
+- [x] Open Graph tags: for LinkedIn/Facebook/Discord link previews
+- [x] Twitter Card tags: for Twitter/X link previews
+- [x] JSON-LD structured data: `Person` schema for Google
+- [x] `robots.txt`: allows all crawlers
+- [x] `sitemap.xml`: auto-generated
+- [x] Canonical URL: prevents duplicate content
+- [x] Semantic HTML: proper heading hierarchy, landmarks, alt text
+- [x] `next/image`: automatic image optimization, lazy loading, WebP/AVIF
 
 ## SEO TODO (After Deploy)
 
-- [ ] Create an `og-image.png` (1200×630px) and place it in `/public/` — this is what shows when your site is shared on social media
-- [ ] Submit your sitemap to [Google Search Console](https://search.google.com/search-console) — sign up, verify your domain, then submit `https://yourdomain.dev/sitemap.xml`
+- [ ] Create an `og-image.png` (1200×630px) and place it in `/public/`: this is what shows when your site is shared on social media
+- [ ] Submit your sitemap to [Google Search Console](https://search.google.com/search-console): sign up, verify your domain, then submit `https://yourdomain.dev/sitemap.xml`
 - [ ] Optionally submit to [Bing Webmaster Tools](https://www.bing.com/webmasters)
 - [ ] Add your portfolio URL to your GitHub profile, LinkedIn, and resume
 
@@ -100,12 +100,12 @@ portfolio/
 │   └── robots.js         # Crawler rules
 ├── components/
 │   ├── Cursor.jsx        # Custom cursor, useReveal hook, LiveClock, Counter
-│   ├── PortfolioApp.jsx  # Client shell — scroll tracking, nav, section layout
+│   ├── PortfolioApp.jsx  # Client shell: scroll tracking, nav, section layout
 │   ├── Sections.jsx      # Hero, About, Projects, Experience, Awards, etc.
 │   ├── Terminal.jsx      # Terminal easter egg (backtick key)
 │   └── ThemeToggle.jsx   # Light/dark mode toggle (persists to localStorage)
 ├── lib/
-│   └── data.js           # All portfolio content — single source of truth
+│   └── data.js           # All portfolio content: single source of truth
 ├── public/
 │   └── assets/           # Portrait, project screenshots
 ├── next.config.js
@@ -115,4 +115,4 @@ portfolio/
 
 ## Editing Content
 
-All portfolio text, projects, experience, awards, and skills live in **`lib/data.js`**. Edit that one file to update your content — no digging through components.
+All portfolio text, projects, experience, awards, and skills live in **`lib/data.js`**. Edit that one file to update your content: no digging through components.
